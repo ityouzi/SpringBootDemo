@@ -1,0 +1,26 @@
+server:
+  port: 8111
+
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guestlocal
+    password: guest
+    virtual-host: local_mq
+
+    #单条消息处理
+    publisher-confirm-type: correlated    #表示成功发布消息到交换器后会触发的回调方法
+    publisher-returns: true               #开启消息发送确认机制
+
+    # 自带重试机制
+    template:
+      retry:
+        enabled: true               #开启重试机制
+        initial-interval: 1000ms    #重试起始间隔时间
+        max-attempts: 10            #最大重试次数
+        max-interval: 10000ms       #最大重试间隔时间
+        multiplier: 2               #间隔时间乘数。（这里配置间隔时间乘数为 2，则第一次间隔时间 1 秒，第二次重试间隔时间 2 秒，第三次 4 秒，以此类推）
+
+
