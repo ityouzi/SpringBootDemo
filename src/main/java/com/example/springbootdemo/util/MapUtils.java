@@ -60,7 +60,7 @@ public class MapUtils {
         map.put("d", "d");
         map.put("e", new ArrayList<>());
         map.put("f", new String[] {});
-        map.put("g", new HashMap<>());
+        map.put("g", new HashMap<>(10));
         Map remove = remove(map);
         System.out.println(remove);
     }
